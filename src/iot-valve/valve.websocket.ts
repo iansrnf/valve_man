@@ -8,6 +8,7 @@ export class ValveWebSocket {
   constructor(@InjectRepository(IotValve) private readonly valveRepository: Repository<IotValve>) {}
   @SubscribeMessage('newMessage')
   async onNewMessage(@MessageBody() input: IotValve) {
+    process.stdout.write('\x1Bc')
     console.log(input);
     const valveList = await this.valveRepository.find();
     if (valveList) {
