@@ -6,6 +6,9 @@ export class IotValve {
   valveId: string;
 
   @Column({ type: 'decimal', scale: 2, nullable: true })
+  trueAngle: number;
+
+  @Column({ type: 'decimal', scale: 2, nullable: true })
   angle: number;
 
   @Column({ type: 'decimal', scale: 2, nullable: true })
