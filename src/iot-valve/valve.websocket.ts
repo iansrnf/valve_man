@@ -35,6 +35,7 @@ export class ValveWebSocket {
 
   @SubscribeMessage('getValve')
   async onGetValve(@MessageBody() input: any): Promise<any> {
+    process.stdout.write('\x1Bc');
     console.log(input);
     const valveList = await this.valveRepository.find({});
       if(valveList){
