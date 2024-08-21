@@ -34,14 +34,15 @@ export class ValveWebSocket {
   }
 
   @SubscribeMessage('getValve')
-  async onGetValve(@MessageBody() input: any) {
-    while (true) {
-      const valveList = await this.valveRepository.find({});
+  async onGetValve(@MessageBody() input: any): Promise<any> {
+    console.log(input);
+    const valveList = await this.valveRepository.find({});
       if(valveList){
         if (valveList.length != 0) {
+          console.log(valveList[0].angle);
           return valveList[0];
         }
       }
-    }
+    return 'no result';
   }
 }
