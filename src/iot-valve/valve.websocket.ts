@@ -32,4 +32,16 @@ export class ValveWebSocket {
     }
     return input;
   }
+
+  @SubscribeMessage('getValve')
+  async onGetValve(@MessageBody() input: any) {
+    while (true) {
+      const valveList = await this.valveRepository.find({});
+      if(valveList){
+        if (valveList.length != 0) {
+          return valveList[0];
+        }
+      }
+    }
+  }
 }
